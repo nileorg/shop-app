@@ -1,32 +1,43 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
+    <div id="nav">
+      <router-link to="/">Home</router-link>|
+      <router-link to="/about">About</router-link>
+      <LoggedOut>
+        <p>You are not logged in, and this is a members-only area!</p>
+        <LoginButton />
+      </LoggedOut>
+      <LoggedIn>
+        <p>You are logged in and can see the special content.</p>
+        <LogoutButton />
+      </LoggedIn>
     </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {
+  LoginButton,
+  LogoutButton,
+  LoggedIn,
+  LoggedOut
+} from "solid-vue-components";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    LoginButton,
+    LogoutButton,
+    LoggedIn,
+    LoggedOut
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
